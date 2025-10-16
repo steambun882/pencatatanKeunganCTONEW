@@ -1,0 +1,16 @@
+{
+  "@@locale": "en",
+  "appTitle": "Project Bootstrap",
+  "counterLabel": "You have tapped {count} times.",
+  "@counterLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "loadingMessage": "Loading counter history…",
+  "genericErrorMessage": "Something went wrong. Please try again.",
+  "incrementButton": "Increment",
+  "resetButton": "Reset"
+}
