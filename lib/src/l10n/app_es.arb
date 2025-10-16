@@ -1,0 +1,16 @@
+{
+  "@@locale": "es",
+  "appTitle": "Inicio del Proyecto",
+  "counterLabel": "Has pulsado {count} veces.",
+  "@counterLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "loadingMessage": "Cargando historial del contador…",
+  "genericErrorMessage": "Algo salió mal. Inténtalo de nuevo.",
+  "incrementButton": "Incrementar",
+  "resetButton": "Reiniciar"
+}
