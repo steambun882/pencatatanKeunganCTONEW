@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+
+if ! command -v flutter >/dev/null 2>&1; then
+  echo "Flutter SDK is required for this project. Install it before committing." >&2
+  exit 1
+fi
+
+changed_dart_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.dart$' || true)
+
+if [ -n "$changed_dart_files" ]; then
+  echo "Formatting Dart files..."
+  echo "$changed_dart_files" | xargs -r dart format
+  echo "$changed_dart_files" | xargs -r git add
+fi
+
+echo "Running flutter analyze..."
+flutter analyze
