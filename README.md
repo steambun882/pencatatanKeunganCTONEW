@@ -36,6 +36,39 @@ flutter analyze
 flutter test
 ```
 
+## Firebase security rules & emulators
+
+Security rules restrict Firestore documents and Storage objects to the authenticated user (`request.auth.uid`). Firebase emulators are configured for Auth, Firestore, and Storage so the rules can be exercised locally.
+
+### Prerequisites
+
+```bash
+npm install
+```
+
+### Run the emulator suite & rule tests
+
+```bash
+# Run automated Firestore & Storage rule tests
+npm run test:rules
+
+# Start the emulators for manual testing (runs until stopped)
+npm run emulators:start
+```
+
+### Deploying rules
+
+```bash
+# Authenticate once per machine
+npx firebase login
+
+# Select the production project (replace with your project id)
+npx firebase use <project-id>
+
+# Deploy Firestore & Storage security rules
+npm run deploy:rules
+```
+
 ## Project Structure
 
 ```
