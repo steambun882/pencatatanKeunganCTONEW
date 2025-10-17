@@ -1,8 +1,10 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:pencatatan_keuangan/app/app.dart';
+import 'package:pencatatan_keuangan/bootstrap.dart';
 
-void main() {
-  runApp(const ProviderScope(child: PencatatanKeuanganApp()));
+Future<void> main() async {
+  await bootstrap(
+    () => const ProviderScope(child: PencatatanKeuanganApp()),
+  );
 }
