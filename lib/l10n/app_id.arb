@@ -1,0 +1,23 @@
+{
+  "@@locale": "id",
+  "appTitle": "Pencatatan Keuangan",
+  "navDashboard": "Dasbor",
+  "navTransactions": "Transaksi",
+  "navReports": "Laporan",
+  "navSettings": "Pengaturan",
+  "onboardingTitle": "Panduan Singkat",
+  "onboardingDescription": "Lihat ringkasan transaksi terbaru, kelola laporan, dan atur preferensi agar pencatatan keuangan terasa lebih mudah.",
+  "onboardingActionPrimary": "Mulai jelajah",
+  "onboardingActionSecondary": "Saya sudah mengerti",
+  "dashboardQuickActionsTitle": "Tindakan cepat",
+  "dashboardQuickActionsDescription": "Tambah transaksi, lihat ringkasan harian, dan temukan wawasan penting untuk keuangan Anda.",
+  "transactionsPlaceholderTitle": "Transaksi",
+  "transactionsPlaceholderDescription": "Di sini Anda dapat menambahkan dan mengelola pemasukan maupun pengeluaran harian Anda.",
+  "reportsPlaceholderTitle": "Laporan",
+  "reportsPlaceholderDescription": "Bangun laporan dan pantau tren keuangan mingguan maupun bulanan secara menyeluruh.",
+  "settingsThemeTitle": "Tampilan aplikasi",
+  "settingsThemeDescription": "Sesuaikan mode tema agar pengalaman visual sesuai dengan preferensi Anda.",
+  "themeModeSystem": "Mengikuti sistem",
+  "themeModeLight": "Terang",
+  "themeModeDark": "Gelap"
+}

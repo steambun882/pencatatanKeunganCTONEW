@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  "appTitle": "Finance Tracker",
+  "navDashboard": "Dashboard",
+  "navTransactions": "Transactions",
+  "navReports": "Reports",
+  "navSettings": "Settings",
+  "onboardingTitle": "Quick walkthrough",
+  "onboardingDescription": "Review recent entries, manage reports, and adjust preferences to keep your finances organised.",
+  "onboardingActionPrimary": "Get started",
+  "onboardingActionSecondary": "I already know",
+  "dashboardQuickActionsTitle": "Quick actions",
+  "dashboardQuickActionsDescription": "Add transactions, review the daily summary, and explore insights tailored to you.",
+  "transactionsPlaceholderTitle": "Transactions",
+  "transactionsPlaceholderDescription": "Create and maintain your income and expense records in one place.",
+  "reportsPlaceholderTitle": "Reports",
+  "reportsPlaceholderDescription": "Generate detailed trends for weekly and monthly performance.",
+  "settingsThemeTitle": "App appearance",
+  "settingsThemeDescription": "Choose the theme mode that best matches your preference.",
+  "themeModeSystem": "Use system setting",
+  "themeModeLight": "Light",
+  "themeModeDark": "Dark"
+}
