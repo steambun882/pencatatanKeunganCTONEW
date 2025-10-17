@@ -20,6 +20,15 @@ dart run build_runner build --delete-conflicting-outputs
 
 ### Running the application
 
+```bash
+# Launch on the default connected device or emulator
+flutter run
+
+# Build debug binaries
+flutter build apk --debug
+flutter build ios --simulator
+```
+
 Flavors are available for development (`dev`) and production (`prod`). Each
 flavor wires up its own Firebase project and runtime environment.
 
@@ -78,6 +87,39 @@ sample project files live in `firebase/dev` and `firebase/prod`.
 - When running `flutterfire configure`, point `--out` to a temporary location so
   you never risk committing generated secrets. Copy only the values you need
   into the checked-in options file.
+
+## Firebase security rules & emulators
+
+Security rules restrict Firestore documents and Storage objects to the authenticated user (`request.auth.uid`). Firebase emulators are configured for Auth, Firestore, and Storage so the rules can be exercised locally.
+
+### Prerequisites
+
+```bash
+npm install
+```
+
+### Run the emulator suite & rule tests
+
+```bash
+# Run automated Firestore & Storage rule tests
+npm run test:rules
+
+# Start the emulators for manual testing (runs until stopped)
+npm run emulators:start
+```
+
+### Deploying rules
+
+```bash
+# Authenticate once per machine
+npx firebase login
+
+# Select the production project (replace with your project id)
+npx firebase use <project-id>
+
+# Deploy Firestore & Storage security rules
+npm run deploy:rules
+```
 
 ### Quality checks
 
