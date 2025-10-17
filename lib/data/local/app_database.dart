@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:drift_flutter/drift_flutter.dart';
 import 'package:drift/native.dart' as native;
 
 part 'app_database.g.dart';
@@ -39,17 +40,17 @@ class Categories extends SyncTable {
 
   IntColumn get parentId => integer()
       .nullable()
-      .references(categories, #id, onDelete: KeyAction.setNull)();
+      .references(Categories, #id, onDelete: KeyAction.setNull)();
 }
 
 @DataClassName('TransactionEntity')
 class Transactions extends SyncTable {
   IntColumn get accountId => integer()
-      .references(accounts, #id, onDelete: KeyAction.cascade)();
+      .references(Accounts, #id, onDelete: KeyAction.cascade)();
 
   IntColumn get categoryId => integer()
       .nullable()
-      .references(categories, #id, onDelete: KeyAction.setNull)();
+      .references(Categories, #id, onDelete: KeyAction.setNull)();
 
   IntColumn get amount => integer()();
 
@@ -61,10 +62,10 @@ class Transactions extends SyncTable {
 @DataClassName('TransferEntity')
 class Transfers extends SyncTable {
   IntColumn get fromAccountId => integer()
-      .references(accounts, #id, onDelete: KeyAction.cascade)();
+      .references(Accounts, #id, onDelete: KeyAction.cascade)();
 
   IntColumn get toAccountId => integer()
-      .references(accounts, #id, onDelete: KeyAction.cascade)();
+      .references(Accounts, #id, onDelete: KeyAction.cascade)();
 
   IntColumn get amount => integer()();
 
@@ -76,7 +77,7 @@ class Transfers extends SyncTable {
 @DataClassName('AttachmentEntity')
 class Attachments extends SyncTable {
   IntColumn get transactionId => integer()
-      .references(transactions, #id, onDelete: KeyAction.cascade)();
+      .references(Transactions, #id, onDelete: KeyAction.cascade)();
 
   TextColumn get fileName => text()();
 
@@ -122,7 +123,10 @@ class AppDatabase extends _$AppDatabase {
   factory AppDatabase.inMemory() => AppDatabase.forTesting(native.NativeDatabase.memory());
 
   static QueryExecutor _openConnection() {
-    return native.NativeDatabase.memory();
+    return FlutterQueryExecutor.inDatabaseFolder(
+      path: 'pencatatan_keuangan.db',
+      logStatements: false,
+    );
   }
 
   @override
