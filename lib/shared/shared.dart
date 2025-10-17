@@ -1,1 +1,3 @@
-// Shared utilities and helpers used across multiple layers.
+export 'onboarding/onboarding_controller.dart';
+export 'preferences/local_preferences.dart';
+export 'ui/responsive_breakpoints.dart';
