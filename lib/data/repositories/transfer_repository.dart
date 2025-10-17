@@ -39,12 +39,12 @@ class TransferRepository {
     return _dao.updateTransfer(
       id,
       TransferCompanion(
-        remoteId: remoteId != null ? Value(remoteId) : const Value.absent(),
-        fromAccountId: fromAccountId != null ? Value(fromAccountId) : const Value.absent(),
-        toAccountId: toAccountId != null ? Value(toAccountId) : const Value.absent(),
-        amount: amount != null ? Value(amount) : const Value.absent(),
-        occurredAt: occurredAt != null ? Value(occurredAt) : const Value.absent(),
-        memo: memo != null ? Value(memo) : const Value.absent(),
+        remoteId: remoteId != null ? Value(remoteId) : const Value<String?>.absent(),
+        fromAccountId: fromAccountId != null ? Value(fromAccountId) : const Value<int>.absent(),
+        toAccountId: toAccountId != null ? Value(toAccountId) : const Value<int>.absent(),
+        amount: amount != null ? Value(amount) : const Value<int>.absent(),
+        occurredAt: occurredAt != null ? Value(occurredAt) : const Value<DateTime>.absent(),
+        memo: memo != null ? Value(memo) : const Value<String?>.absent(),
       ),
     );
   }

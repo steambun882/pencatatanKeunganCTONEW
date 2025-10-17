@@ -33,10 +33,10 @@ class CategoryRepository {
     return _dao.updateCategory(
       id,
       CategoryCompanion(
-        remoteId: remoteId != null ? Value(remoteId) : const Value.absent(),
-        name: name != null ? Value(name) : const Value.absent(),
-        colorHex: colorHex != null ? Value(colorHex) : const Value.absent(),
-        parentId: parentId != null ? Value(parentId) : const Value.absent(),
+        remoteId: remoteId != null ? Value(remoteId) : const Value<String?>.absent(),
+        name: name != null ? Value(name) : const Value<String>.absent(),
+        colorHex: colorHex != null ? Value(colorHex) : const Value<String>.absent(),
+        parentId: parentId != null ? Value(parentId) : const Value<int?>.absent(),
       ),
     );
   }

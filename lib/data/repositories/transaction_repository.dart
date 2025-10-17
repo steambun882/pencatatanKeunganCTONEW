@@ -39,12 +39,12 @@ class TransactionRepository {
     return _dao.updateTransaction(
       id,
       TransactionCompanion(
-        remoteId: remoteId != null ? Value(remoteId) : const Value.absent(),
-        accountId: accountId != null ? Value(accountId) : const Value.absent(),
-        categoryId: categoryId != null ? Value(categoryId) : const Value.absent(),
-        amount: amount != null ? Value(amount) : const Value.absent(),
-        occurredAt: occurredAt != null ? Value(occurredAt) : const Value.absent(),
-        note: note != null ? Value(note) : const Value.absent(),
+        remoteId: remoteId != null ? Value(remoteId) : const Value<String?>.absent(),
+        accountId: accountId != null ? Value(accountId) : const Value<int>.absent(),
+        categoryId: categoryId != null ? Value(categoryId) : const Value<int?>.absent(),
+        amount: amount != null ? Value(amount) : const Value<int>.absent(),
+        occurredAt: occurredAt != null ? Value(occurredAt) : const Value<DateTime>.absent(),
+        note: note != null ? Value(note) : const Value<String?>.absent(),
       ),
     );
   }

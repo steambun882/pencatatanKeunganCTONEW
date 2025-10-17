@@ -39,11 +39,11 @@ class AccountRepository {
     return _dao.updateAccount(
       id,
       AccountCompanion(
-        remoteId: remoteId != null ? Value(remoteId) : const Value.absent(),
-        name: name != null ? Value(name) : const Value.absent(),
-        type: type != null ? Value(type) : const Value.absent(),
-        balance: balance != null ? Value(balance) : const Value.absent(),
-        currency: currency != null ? Value(currency) : const Value.absent(),
+        remoteId: remoteId != null ? Value(remoteId) : const Value<String?>.absent(),
+        name: name != null ? Value(name) : const Value<String>.absent(),
+        type: type != null ? Value(type) : const Value<String>.absent(),
+        balance: balance != null ? Value(balance) : const Value<int>.absent(),
+        currency: currency != null ? Value(currency) : const Value<String>.absent(),
       ),
     );
   }

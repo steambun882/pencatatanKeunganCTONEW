@@ -1,12 +1,11 @@
 import 'package:drift/drift.dart';
-import 'package:drift_flutter/drift_flutter.dart';
 import 'package:drift/native.dart' as native;
 
 part 'app_database.g.dart';
 
 /// Common columns shared across all sync-tracked tables.
 abstract class SyncTable extends Table {
-  IntColumn get id => integer().autoIncrement();
+  IntColumn get id => integer().autoIncrement()();
 
   TextColumn get remoteId => text().nullable()();
 
@@ -40,17 +39,17 @@ class Categories extends SyncTable {
 
   IntColumn get parentId => integer()
       .nullable()
-      .references(Categories, #id, onDelete: KeyAction.setNull)();
+      .references(categories, #id, onDelete: KeyAction.setNull)();
 }
 
 @DataClassName('TransactionEntity')
 class Transactions extends SyncTable {
   IntColumn get accountId => integer()
-      .references(Accounts, #id, onDelete: KeyAction.cascade)();
+      .references(accounts, #id, onDelete: KeyAction.cascade)();
 
   IntColumn get categoryId => integer()
       .nullable()
-      .references(Categories, #id, onDelete: KeyAction.setNull)();
+      .references(categories, #id, onDelete: KeyAction.setNull)();
 
   IntColumn get amount => integer()();
 
@@ -62,10 +61,10 @@ class Transactions extends SyncTable {
 @DataClassName('TransferEntity')
 class Transfers extends SyncTable {
   IntColumn get fromAccountId => integer()
-      .references(Accounts, #id, onDelete: KeyAction.cascade)();
+      .references(accounts, #id, onDelete: KeyAction.cascade)();
 
   IntColumn get toAccountId => integer()
-      .references(Accounts, #id, onDelete: KeyAction.cascade)();
+      .references(accounts, #id, onDelete: KeyAction.cascade)();
 
   IntColumn get amount => integer()();
 
@@ -77,7 +76,7 @@ class Transfers extends SyncTable {
 @DataClassName('AttachmentEntity')
 class Attachments extends SyncTable {
   IntColumn get transactionId => integer()
-      .references(Transactions, #id, onDelete: KeyAction.cascade)();
+      .references(transactions, #id, onDelete: KeyAction.cascade)();
 
   TextColumn get fileName => text()();
 
@@ -90,16 +89,11 @@ class Attachments extends SyncTable {
 
 @DataClassName('SyncMetadataEntity')
 class SyncMetadataEntries extends SyncTable {
-  TextColumn get entityType => text()();
+  TextColumn get entityType => text().unique()();
 
   DateTimeColumn get lastSyncedAt => dateTime().nullable()();
 
   TextColumn get lastSyncCursor => text().nullable()();
-
-  @override
-  List<Set<Column<Object?>>> get uniqueKeys => [
-        {entityType}
-      ];
 }
 
 @DriftDatabase(
@@ -128,10 +122,7 @@ class AppDatabase extends _$AppDatabase {
   factory AppDatabase.inMemory() => AppDatabase.forTesting(native.NativeDatabase.memory());
 
   static QueryExecutor _openConnection() {
-    return FlutterQueryExecutor.inDatabaseFolder(
-      path: 'pencatatan_keuangan.db',
-      logStatements: false,
-    );
+    return native.NativeDatabase.memory();
   }
 
   @override

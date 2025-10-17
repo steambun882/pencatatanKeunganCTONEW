@@ -98,7 +98,7 @@ void main() {
       remoteId: 'txn-remote-1',
     );
 
-    var transaction = await transactionRepository.getTransaction(transactionId);
+    final transaction = await transactionRepository.getTransaction(transactionId);
     expect(transaction, isNotNull);
     expect(transaction!.note, 'Weekly shopping - supermarket');
     expect(transaction.remoteId, 'txn-remote-1');

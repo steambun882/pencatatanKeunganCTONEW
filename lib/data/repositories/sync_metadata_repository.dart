@@ -21,7 +21,7 @@ class SyncMetadataRepository {
         entityType: Value(entityType),
         lastSyncedAt: Value(lastSyncedAt),
         lastSyncCursor: Value(lastSyncCursor),
-        remoteId: remoteId != null ? Value(remoteId) : const Value.absent(),
+        remoteId: remoteId != null ? Value(remoteId) : const Value<String?>.absent(),
       ),
     );
   }
