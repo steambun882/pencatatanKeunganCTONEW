@@ -9,10 +9,12 @@ class PencatatanKeuanganApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appTheme = ref.watch(appThemeProvider);
+    final environment = ref.watch(appEnvironmentProvider);
 
     return MaterialApp(
-      title: 'Pencatatan Keuangan',
-      debugShowCheckedModeBanner: false,
+      title:
+          environment.isProd ? 'Pencatatan Keuangan' : 'Pencatatan Keuangan (Dev)',
+      debugShowCheckedModeBanner: environment.isDev,
       theme: appTheme.light,
       darkTheme: appTheme.dark,
       themeMode: ThemeMode.system,

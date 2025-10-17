@@ -1,8 +1,9 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pencatatan_keuangan/bootstrap.dart';
+import 'package:pencatatan_keuangan/core/core.dart';
 
-import 'package:pencatatan_keuangan/app/app.dart';
+Future<void> main() async {
+  const flavorName = String.fromEnvironment('APP_FLAVOR', defaultValue: 'dev');
+  final environment = AppEnvironment.fromName(flavorName);
 
-void main() {
-  runApp(const ProviderScope(child: PencatatanKeuanganApp()));
+  await bootstrap(environment: environment);
 }

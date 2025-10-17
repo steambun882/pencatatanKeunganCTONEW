@@ -43,3 +43,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase configuration (real secrets)
+android/app/src/**/google-services.json
+ios/Runner/GoogleService-Info.plist
+firebase/**/google-services.json
+firebase/**/GoogleService-Info.plist
