@@ -16,7 +16,7 @@ class PencatatanKeuanganApp extends ConsumerWidget {
       theme: appTheme.light,
       darkTheme: appTheme.dark,
       themeMode: ThemeMode.system,
-      home: const HomePage(),
+      home: const AuthGate(),
     );
   }
 }
