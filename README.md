@@ -20,14 +20,64 @@ dart run build_runner build --delete-conflicting-outputs
 
 ### Running the application
 
-```bash
-# Launch on the default connected device or emulator
-flutter run
+Flavors are available for development (`dev`) and production (`prod`). Each
+flavor wires up its own Firebase project and runtime environment.
 
-# Build debug binaries
-flutter build apk --debug
-flutter build ios --simulator
+```bash
+# Development flavor
+flutter run --flavor dev -t lib/main_dev.dart
+
+# Production flavor
+flutter run --flavor prod -t lib/main_prod.dart
 ```
+
+If you are working on iOS before creating platform-specific schemes, you can
+omit `--flavor` and rely on the entrypoints with dart-defines:
+
+```bash
+flutter run -t lib/main_dev.dart --dart-define=APP_FLAVOR=dev
+flutter run -t lib/main_prod.dart --dart-define=APP_FLAVOR=prod
+```
+
+## Firebase & environment setup
+
+The application uses Firebase Authentication, Cloud Firestore, and Cloud Storage.
+Placeholder configuration lives in `lib/firebase/firebase_options.dart` and
+sample project files live in `firebase/dev` and `firebase/prod`.
+
+1. Install the FlutterFire CLI:
+   ```bash
+   dart pub global activate flutterfire_cli
+   ```
+2. Configure the **development** project and copy the generated options:
+   ```bash
+   flutterfire configure \
+     --project <firebase-dev-project-id> \
+     --platforms=android,ios \
+     --out=build/firebase_dev_options.dart \
+     --ios-bundle-id com.example.pencatatankeuangan.dev \
+     --android-package-name com.example.pencatatan_keuangan.dev
+   ```
+   - Use the resulting `FirebaseOptions` values to replace `_devAndroid` and
+     `_devIos` in `lib/firebase/firebase_options.dart`.
+   - Move the generated `google-services.json` into `android/app/src/dev/`.
+   - Move `GoogleService-Info.plist` into `ios/Runner/Firebase/dev/`.
+3. Repeat the command for the **production** project, adjusting bundle IDs
+   (`com.example.pencatatankeuangan`) and output path
+   (`build/firebase_prod_options.dart`). Copy the values into `_prodAndroid` and
+   `_prodIos`, then place the platform files in `android/app/src/prod/` and
+   `ios/Runner/Firebase/prod/`.
+
+### Managing secrets
+
+- Real Firebase configuration files (`google-services.json`,
+  `GoogleService-Info.plist`) are ignored via `.gitignore`.
+- Keep the example templates updated for onboarding, but store production
+  secrets in a secure manager (e.g. 1Password, Google Secret Manager, or your
+  preferred vault).
+- When running `flutterfire configure`, point `--out` to a temporary location so
+  you never risk committing generated secrets. Copy only the values you need
+  into the checked-in options file.
 
 ### Quality checks
 

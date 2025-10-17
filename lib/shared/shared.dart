@@ -1,1 +1,1 @@
-// Shared utilities and helpers used across multiple layers.
+export 'firebase/firebase_providers.dart';
